@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: doc-storage-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./storage:/app/storage
+      - ./files.db:/app/files.db
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
